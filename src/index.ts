@@ -8,4 +8,4 @@ const dataLoader = new DataLoader('/')
 
 const app = new App(DataLoader.getMockData())
 
-// app.init()
+app.init()

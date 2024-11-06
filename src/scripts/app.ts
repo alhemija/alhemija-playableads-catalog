@@ -27,28 +27,33 @@ export class App {
         this.renderCards(gameCards);
     }
 
-    private renderCards(gameCard: IGameCard[]) {
-        const container = document.querySelector('#card-container')
-
+    private renderCards(gameCards: IGameCard[]) {
+        const container = document.querySelector('#card-container');
+    
         if (!container) {
-            console.error('Container not found')
-            return
+            console.error('Container not found');
+            return;
         }
-        container.innerHTML = ""
-
-        gameCard.forEach((card) => {
+        container.innerHTML = "";
+    
+        gameCards.forEach((card) => {
             const cardElement = document.createElement("div");
-            cardElement.classList.add("rounded-lg");
-            cardElement.classList.add("p-4");
-            cardElement.classList.add("text-white");
+            cardElement.classList.add("rounded-lg", "p-4", "text-white");
             cardElement.innerHTML = `
-                <img src="${card.image}" alt="${card.image}"w-full rounded-xl mb-4">
+                <img src="${card.image}" alt="${card.title}" class="w-full rounded-xl mb-4">
                 <h3 class="text-sm font-bold font-grotesk">${card.title}</h3>
                 <p class="text-xs font-grotesk text-subtext">${card.description}</p>
             `;
+    
+            // Добавление события клика для перехода на игровую страницу
+            cardElement.addEventListener('click', () => {
+                window.location.href = `game.html?gameId=${card.id}`;
+            });
+    
             container.appendChild(cardElement);
         });
     }
+    
 }
 
 

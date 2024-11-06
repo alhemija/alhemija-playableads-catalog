@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body class="bg-primary m-0">
+    <!-- Хедер -->
+    <header class="bg-primary h-[85px] flex items-center  border-b border-[#E5E8EB] w-full">
+        <div class="w-full flex justify-between items-center m-20">
+            <!-- Логотип -->
+            <div id="logo-container" class="flex items-center space-x-2">
+                <img src="./assets/images/logo-icon.png" alt="">
+                <img class="mt-6" src="./assets/images/logo-text.png" alt="">
+            </div>
+            <!-- Навигация и Поиск -->
+            <div class="flex items-center pt-5">
+                <nav class="hidden md:flex space-x-4 font-vietnam mr-6 text-[14px]">
+                    <a href="#" class="text-white hover:text-gray-200">Portfolio</a>
+                    <a href="#" class="text-white hover:text-gray-200">Pricing</a>
+                    <a href="#" class="text-white hover:text-gray-200">Contact</a>
+                </nav>
+                <div class="relative">
+                    <input type="text" placeholder="Search"
+                        class="bg-[#2E2E2E] text-white placeholder-[#999999] rounded-lg px-10 py-2 focus:outline-none" />
+                    <img src="./assets/images/search.png" alt="Search Icon"
+                        class="w-5 h-5 absolute top-1/2 left-3 transform -translate-y-1/2" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер для отображения игры -->
+    <div class="m-20">
+        <h1 class="text-white text-3xl font-bold mb-6">Игра #<span id="game-index"></span></h1>
+        <div id="game-container" class="bg-secondary p-10 rounded-lg">
+            <!-- Здесь будет загружаться содержимое игры -->
+            <p class="text-white">Здесь будет отображаться выбранная игра.</p>
+        </div>
+    </div>
+
+    <script>
+        // Получение индекса игры из URL
+        const params = new URLSearchParams(window.location.search);
+        const gameId = params.get('gameId');
+        if (gameId) {
+            document.getElementById('game-index').textContent = gameId;
+        }
+    </script>
+</body>
+
+</html>
