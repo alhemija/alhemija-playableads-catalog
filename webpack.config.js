@@ -1,6 +1,6 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: './src/index.ts',
@@ -22,9 +22,9 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          'style-loader', // Вставляет стили в DOM
-          'css-loader',   // Обрабатывает @import и url()
-          'postcss-loader' // Обрабатывает PostCSS (Tailwind)
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
         ],
       },
       {
@@ -34,7 +34,6 @@ module.exports = {
           filename: 'assets/images/[name][ext]',
         },
       },
-      // Добавьте другие загрузчики по необходимости
     ],
   },
   resolve: {
@@ -44,11 +43,15 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/game.html',
+      filename: 'game.html'
     }),
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    // publicPath: '/',
   },
 };

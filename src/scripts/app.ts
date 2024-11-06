@@ -1,9 +1,7 @@
-
 import { insertLogo } from './logo';
 import { DataLoader } from './DataLoader';
 import { IGameCard } from './Interfaces/IGameCard';
-insertLogo()
-
+insertLogo();
 
 export class App {
     private dataLoader?: DataLoader;
@@ -53,7 +51,4 @@ export class App {
             container.appendChild(cardElement);
         });
     }
-    
 }
-
-
