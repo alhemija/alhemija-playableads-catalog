@@ -3,7 +3,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    game: './src/scripts/game.ts',
+  },
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
@@ -43,15 +46,17 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
+      chunks: ['index']
     }),
     new HtmlWebpackPlugin({
       template: './src/game.html',
-      filename: 'game.html'
+      filename: 'game.html',
+      chunks: ['game']
     }),
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };

@@ -3,4 +3,5 @@ export interface IGameCard{
     image: string;
     title: string;
     description: string;
+    gameUrl?: string;
 }

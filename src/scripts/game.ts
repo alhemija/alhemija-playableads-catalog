@@ -1,7 +1,7 @@
 // Подключение game.ts для управления игровыми функциями
 import { App } from './app';
 import { DataLoader } from './DataLoader';
-
+import '../styles/index.css'
 
 export class GameApp {
     private gameId: string;
@@ -10,10 +10,15 @@ export class GameApp {
         this.gameId = gameId;
     }
 
-    init() {
+    init(gameUrl: string) {
         // Логика для запуска игры
         console.log(`Игра с ID ${this.gameId} запущена.`);
-        // Здесь будет логика работы с игрой
+        const iframe = document.getElementById('game-iframe') as HTMLIFrameElement;
+        if (iframe) {
+            iframe.src = gameUrl;
+        } else {
+            console.error('Game iframe not found');
+        }
     }
 }
 
@@ -21,9 +26,21 @@ export class GameApp {
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get('gameId');
-    if (gameId) {
+    const gameUrl = params.get('gameUrl');
+
+    console.log('/////////////////')
+
+    // TODO: защита от XSS атаки, включить когда будут права на cloud
+    // const allowedDomains = ['your-allowed-domain.com'];
+    // const url = new URL(gameUrl);
+    // if (!allowedDomains.includes(url.hostname)) {
+    //     console.error('Недопустимый URL игры');
+    //     return;
+    // }
+
+    if (gameId && gameUrl) {
         const gameApp = new GameApp(gameId);
-        gameApp.init();
+        gameApp.init(gameUrl);
     } else {
         const dataLoader = new DataLoader('/');
         const app = new App(DataLoader.getMockData());

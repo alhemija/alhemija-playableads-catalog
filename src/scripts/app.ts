@@ -27,13 +27,13 @@ export class App {
 
     private renderCards(gameCards: IGameCard[]) {
         const container = document.querySelector('#card-container');
-    
+
         if (!container) {
             console.error('Container not found');
             return;
         }
         container.innerHTML = "";
-    
+
         gameCards.forEach((card) => {
             const cardElement = document.createElement("div");
             cardElement.classList.add("rounded-lg", "p-4", "text-white");
@@ -42,12 +42,19 @@ export class App {
                 <h3 class="text-sm font-bold font-grotesk">${card.title}</h3>
                 <p class="text-xs font-grotesk text-subtext">${card.description}</p>
             `;
-    
-            // Добавление события клика для перехода на игровую страницу
+
+            // cardElement.addEventListener('click', () => {
+            //     window.location.href = `game.html?gameId=${card.id}`;
+            // });
+
             cardElement.addEventListener('click', () => {
-                window.location.href = `game.html?gameId=${card.id}`;
+                if (card.gameUrl) {
+                    window.location.href = `game.html?gameId=${card.id}&gameUrl=${encodeURIComponent(card.gameUrl)}`
+                } else {
+                    window.location.href = `game.html?gameId=${card.id}`;
+                }
             });
-    
+
             container.appendChild(cardElement);
         });
     }
