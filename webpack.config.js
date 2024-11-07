@@ -40,7 +40,7 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html'

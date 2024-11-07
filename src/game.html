@@ -11,7 +11,7 @@
 
 <body class="bg-primary m-0">
     <!-- Хедер -->
-    <header class="bg-primary h-[85px] flex items-center  border-b border-[#E5E8EB] w-full">
+    <header class="bg-primary h-[85px] flex items-center border-b border-[#E5E8EB] w-full">
         <div class="w-full flex justify-between items-center m-20">
             <!-- Логотип -->
             <div id="logo-container" class="flex items-center space-x-2">
@@ -39,8 +39,9 @@
     <div class="m-20">
         <h1 class="text-white text-3xl font-bold mb-6">Игра #<span id="game-index"></span></h1>
         <div id="game-container" class="bg-secondary p-10 rounded-lg">
-            <!-- Здесь будет загружаться содержимое игры -->
-            <p class="text-white">Здесь будет отображаться выбранная игра.</p>
+            <iframe id="game-iframe" src="./unity.html" width="100%" height="600px" frameborder="0">
+                Ваш браузер не поддерживает iframe.
+            </iframe>
         </div>
     </div>
 

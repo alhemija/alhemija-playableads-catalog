@@ -8,25 +8,25 @@ export const data: IGameCard[] = [
         description: "Racing"
     },
     {
-        id: 0,
+        id: 1,
         image: "./assets/images/mockImage.jpg",
         title: "Desert race",
         description: "Racing"
     },
     {
-        id: 0,
+        id: 2,
         image: "./assets/images/mockImage.jpg",
         title: "Desert race",
         description: "Racing"
     },
     {
-        id: 0,
+        id: 3,
         image: "./assets/images/mockImage.jpg",
         title: "Desert race",
         description: "Racing"
     },
     {
-        id: 0,
+        id: 4,
         image: "./assets/images/mockImage.jpg",
         title: "Desert race",
         description: "Racing"
