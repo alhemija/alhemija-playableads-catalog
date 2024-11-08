@@ -16,5 +16,6 @@ createMobileScrollEffect()
 if (!(window as any).mobileMenuInitialized) {
     const mobileMenu = new MobileMenu('hamburger-button', 'mobile-menu');
     mobileMenu.init();
+    console.log('MobileMenu initialized.');
     (window as any).mobileMenuInitialized = true;
 }

@@ -2,6 +2,7 @@
 import { App } from './app';
 import { DataLoader } from './DataLoader';
 import '../styles/index.css'
+import { MobileMenu } from './mobileMenu';
 
 export class GameApp {
     private gameId: string;
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameId = params.get('gameId');
     const gameUrl = params.get('gameUrl');
 
-    console.log('/////////////////')
+    console.log('init game')
 
     // TODO: защита от XSS атаки, включить когда будут права на cloud
     // const allowedDomains = ['your-allowed-domain.com'];
@@ -37,6 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //     console.error('Недопустимый URL игры');
     //     return;
     // }
+
+    if (!(window as any).mobileMenuInitialized) {
+        const mobileMenu = new MobileMenu('hamburger-button', 'mobile-menu');
+        mobileMenu.init();
+        console.log('MobileMenu initialized.');
+        (window as any).mobileMenuInitialized = true;
+    }
 
     if (gameId && gameUrl) {
         const gameApp = new GameApp(gameId);
