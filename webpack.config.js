@@ -43,7 +43,7 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   plugins: [
-
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
@@ -58,5 +58,6 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
 };

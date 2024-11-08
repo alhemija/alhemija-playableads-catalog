@@ -6,38 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог Плееблов</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-primary m-0">
     <!-- Хедер -->
-    <header class="bg-primary h-[85px] flex items-center  border-b border-[#E5E8EB] w-full">
-        <div class="w-full flex justify-between items-center m-20">
-            <!-- Логотип -->
-            <div id="logo-container" class="flex items-center space-x-2">
-                <img src="./assets/images/logo-icon.png" alt="">
-                <img class="mt-6" src="./assets/images/logo-text.png" alt="">
-            </div>
-            <!-- Навигация и Поиск -->
-            <div class="flex items-center pt-5">
-                <nav class="hidden md:flex space-x-4 font-vietnam mr-6 text-[14px]">
-                    <a href="#" class="text-white hover:text-gray-200">Portfolio</a>
-                    <a href="#" class="text-white hover:text-gray-200">Pricing</a>
-                    <a href="#" class="text-white hover:text-gray-200">Contact</a>
-                </nav>
-                <div class="relative">
-                    <input type="text" placeholder="Search"
-                        class="bg-[#2E2E2E] text-white placeholder-[#999999] rounded-lg px-10 py-2 focus:outline-none" />
-                    <img src="./assets/images/search.png" alt="Search Icon"
-                        class="w-5 h-5 absolute top-1/2 left-3 transform -translate-y-1/2" />
-                </div>
-            </div>
+   <!-- Хедер -->
+<header class="bg-primary h-[85px] flex items-center border-b border-[#E5E8EB] w-full">
+    <div class="w-full flex justify-between items-center px-4 md:px-20">
+        <!-- Логотип -->
+        <div id="logo-container" class="flex items-center space-x-2">
+            <img src="./assets/images/logo-icon.png" alt="Логотип">
+            <img class="mt-6" src="./assets/images/logo-text.png" alt="Название компании">
         </div>
-    </header>
+        <!-- Навигация и Поиск -->
+        <div class="flex items-center">
+            <!-- Навигация для десктопа -->
+            <nav class="hidden md:flex space-x-4 font-vietnam mr-6 text-[14px]">
+                <a href="#" class="text-white hover:text-gray-200">Portfolio</a>
+                <a href="#" class="text-white hover:text-gray-200">Pricing</a>
+                <a href="#" class="text-white hover:text-gray-200">Contact</a>
+            </nav>
+            <!-- Поиск -->
+            <div class="relative hidden md:block">
+                <input type="text" placeholder="Search"
+                    class="bg-[#2E2E2E] text-white placeholder-[#999999] rounded-lg px-10 py-2 focus:outline-none" />
+                <img src="./assets/images/search.png" alt="Search Icon"
+                    class="w-5 h-5 absolute top-1/2 left-3 transform -translate-y-1/2" />
+            </div>
+            <!-- Кнопка гамбургера для мобильных -->
+            <button id="hamburger-button" class="md:hidden ml-4 focus:outline-none" aria-label="Меню">
+                <svg id="hamburger-icon" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Мобильное меню -->
+    <nav id="mobile-menu" class="md:hidden fixed top-[85px] w-full rounded-b-xl bg-subtext border-t border-[#E5E8EB] transition-opacity duration-500 ease-in-out opacity-0 pointer-events-none z-50">
+        <ul class="flex flex-col p-4 space-y-2">
+            <li><a href="#" class="text-white hover:text-gray-200">Portfolio</a></li>
+            <li><a href="#" class="text-white hover:text-gray-200">Pricing</a></li>
+            <li><a href="#" class="text-white hover:text-gray-200">Contact</a></li>
+            <li class="mt-2">
+                <input type="text" placeholder="Search"
+                    class="w-full bg-[#2E2E2E] text-white placeholder-[#999999] rounded-lg px-3 py-2 focus:outline-none" />
+            </li>
+        </ul>
+    </nav>
+    
+    
+</header>
 
     <!-- Основной контейнер с отступом -->
-    <div class="m-20">
+    <div class="m-5 md:m-10 lg:m-20 ">
         <!-- Контейнер для карточек -->
-        <div id="card-container" class="grid grid-cols-5 ">
+        <div id="card-container"  class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <!-- Карточка игры -->
             <!-- <div class=" rounded-lg p-4 text-white">
                 <img src="./assets/images/mockImage.jpg" alt="Game 1" class="w-full rounded-xl mb-4">
@@ -71,8 +103,7 @@
         </div>
     </div>
 
-
-    <script src="index.bundle.js"></script>
+    <script src="index.bundle.js"></script> 
 </body>
 
 </html>
