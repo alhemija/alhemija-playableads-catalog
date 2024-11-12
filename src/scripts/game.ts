@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const gameApp = new GameApp(gameId);
         gameApp.init(gameUrl);
     } else {
-        const dataLoader = new DataLoader('/');
-        const app = new App(DataLoader.getMockData());
-        app.init();
+        // const dataLoader = new DataLoader('/');
+        // const app = new App(DataLoader.getMockData());
+        // app.init();
     }
 });
