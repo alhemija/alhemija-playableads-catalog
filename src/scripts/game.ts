@@ -4,6 +4,7 @@ import { DataLoader } from './DataLoader';
 import '../styles/index.css'
 import { MobileMenu } from './mobileMenu';
 import { initBottomPanelToggle } from './bottomPanelToggle';
+import { initViewToggle } from './toggleView';
 
 export class GameApp {
     private gameId: string;
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('init game')
     initBottomPanelToggle();
+    initViewToggle()
 
     // TODO: защита от XSS атаки, включить когда будут права на cloud
     // const allowedDomains = ['your-allowed-domain.com'];
