@@ -1,6 +1,8 @@
 import { insertLogo } from './logo';
 import { DataLoader } from './DataLoader';
 import { IGameCard } from './Interfaces/IGameCard';
+import { showLoader, hideLoader } from './loader'; // импорт лоадера
+
 insertLogo();
 
 export class App {
@@ -17,11 +19,25 @@ export class App {
 
     async init() {
         let gameCards: IGameCard[] = [];
+        const container = document.querySelector('#card-container') as HTMLElement;
+
+        if (container) {
+            showLoader(container); 
+        }
+
+        // Эмуляция задержки загрузки
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
         if (this.dataLoader) {
             gameCards = await this.dataLoader.fetchData();
         } else if (this.gameCards) {
             gameCards = this.gameCards;
         }
+
+        if (container) {
+            hideLoader(container); // Скрыть лоадер после загрузки данных
+        }
+
         this.renderCards(gameCards);
     }
 
@@ -43,13 +59,9 @@ export class App {
                 <p class="text-xs font-grotesk text-subtext">${card.description}</p>
             `;
 
-            // cardElement.addEventListener('click', () => {
-            //     window.location.href = `game.html?gameId=${card.id}`;
-            // });
-
             cardElement.addEventListener('click', () => {
                 if (card.gameUrl) {
-                    window.location.href = `game.html?gameId=${card.id}&gameUrl=${encodeURIComponent(card.gameUrl)}`
+                    window.location.href = `game.html?gameId=${card.id}&gameUrl=${encodeURIComponent(card.gameUrl)}`;
                 } else {
                     window.location.href = `game.html?gameId=${card.id}`;
                 }

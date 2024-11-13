@@ -4,7 +4,8 @@ export function initViewToggle() {
     const iframe = document.getElementById('game-iframe') as HTMLIFrameElement;
     const desktopButton = document.querySelector('button[data-view="desktop"]');
     const mobileButton = document.querySelector('button[data-view="mobile"]');
-
+    console.log('initViewToggle')
+    console.log(iframe, desktopButton, mobileButton)
     if (!iframe || !desktopButton || !mobileButton) {
         console.error('Не удалось найти iframe или кнопки представления');
         return;
