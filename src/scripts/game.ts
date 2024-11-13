@@ -3,6 +3,7 @@ import { App } from './app';
 import { DataLoader } from './DataLoader';
 import '../styles/index.css'
 import { MobileMenu } from './mobileMenu';
+import { initBottomPanelToggle } from './bottomPanelToggle';
 
 export class GameApp {
     private gameId: string;
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameUrl = params.get('gameUrl');
 
     console.log('init game')
+    initBottomPanelToggle();
 
     // TODO: защита от XSS атаки, включить когда будут права на cloud
     // const allowedDomains = ['your-allowed-domain.com'];
@@ -55,3 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // app.init();
     }
 });
+
+
