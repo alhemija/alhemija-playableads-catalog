@@ -11,9 +11,9 @@ const dataLoader = new DataLoader('/');
 
 const app = new App(DataLoader.getMockData());
 app.init();
-setTimeout(() =>{ 
-    createMobileScrollEffect()
-}, 2000);
+
+createMobileScrollEffect()
+
 
 // Проверка глобальной переменной для предотвращения двойной инициализации
 if (!(window as any).mobileMenuInitialized) {
