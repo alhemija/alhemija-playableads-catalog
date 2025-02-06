@@ -7,7 +7,7 @@ import homeIcon from '../assets/images/home.png'
 import desktopIcon from '../assets/images/desktop.png'
 import mobileIcon from '../assets/images/mobile.png'
 
-export const insertLogo = () => {
+export const loadImages = () => {
     const iconElement = document.createElement('img');
     iconElement.src = logoIcon;
     iconElement.alt = 'Логотип иконка';

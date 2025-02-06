@@ -1,9 +1,9 @@
-import { insertLogo } from './logo';
+import { loadImages } from './loadImages';
 import { DataLoader } from './DataLoader';
 import { IGameCard } from './Interfaces/IGameCard';
 import { showLoader, hideLoader } from './loader'; // импорт лоадера
 
-insertLogo();
+loadImages();
 
 export class App {
     private dataLoader?: DataLoader;

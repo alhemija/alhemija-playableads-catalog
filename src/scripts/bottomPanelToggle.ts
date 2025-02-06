@@ -29,7 +29,15 @@ export function initBottomPanelToggle() {
 
     // Закрытие панели при клике на любую кнопку внутри панели
     buttons.forEach(button => {
-        button.addEventListener("click", hidePanel);
+        button.addEventListener("click", (e) => {
+            console.log((e.target as HTMLElement).classList.contains('active'))
+            console.log(e.target)
+            if (!(e.target as HTMLElement).classList.contains('active')) {
+                e.stopPropagation();
+            } else {
+                hidePanel();
+            }
+        });
     });
 
     // Закрытие панели при клике на любое место на экране

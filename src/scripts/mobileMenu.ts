@@ -44,7 +44,7 @@ export class MobileMenu {
                 this.hamburgerIcon.classList.add('hidden');
                 this.closeIcon.classList.remove('hidden');
 
-                document.addEventListener('click', this.handleOutsideClick.bind(this));
+                document.addEventListener('click', this.handleOutsideClick);
             } else {
                 this.menu.classList.remove('opacity-100', 'pointer-events-auto');
                 this.menu.classList.add('opacity-0', 'pointer-events-none');
@@ -55,7 +55,7 @@ export class MobileMenu {
                 this.hamburgerIcon.classList.remove('hidden');
                 this.closeIcon.classList.add('hidden');
 
-                document.removeEventListener('click', this.handleOutsideClick.bind(this));
+                document.removeEventListener('click', this.handleOutsideClick);
             }
         }
     }
