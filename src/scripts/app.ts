@@ -52,9 +52,23 @@ export class App {
 
         gameCards.forEach((card) => {
             const cardElement = document.createElement("div");
-            cardElement.classList.add("rounded-lg", "p-4", "text-white");
+            cardElement.classList.add(
+                "rounded-lg",
+                "p-4",
+                "text-white",
+                "min-h-screen",
+                "snap-always",
+                "snap-start",
+                "md:min-h-0"
+            );
+            
+            
+            
             cardElement.innerHTML = `
-                <img src="${card.image}" alt="${card.title}" class="w-full rounded-xl mb-4">
+               <img src="${card.image}" alt="${card.title}" class="w-full rounded-xl mb-4 object-contain">
+
+
+
                 <h3 class="text-sm font-bold font-grotesk">${card.title}</h3>
                 <p class="text-xs font-grotesk text-subtext">${card.description}</p>
             `;

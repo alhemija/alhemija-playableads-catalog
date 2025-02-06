@@ -11,7 +11,10 @@ const dataLoader = new DataLoader('/');
 
 const app = new App(DataLoader.getMockData());
 app.init();
-createMobileScrollEffect()
+setTimeout(() =>{ 
+    createMobileScrollEffect()
+}, 2000);
+
 // Проверка глобальной переменной для предотвращения двойной инициализации
 if (!(window as any).mobileMenuInitialized) {
     const mobileMenu = new MobileMenu('hamburger-button', 'mobile-menu');
