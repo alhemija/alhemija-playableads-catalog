@@ -2,12 +2,14 @@ import { loadImages } from './loadImages';
 import { DataLoader } from './DataLoader';
 import { IGameCard } from './Interfaces/IGameCard';
 import { showLoader, hideLoader } from './loader'; // импорт лоадера
+import { CardRederer } from './CardRenderer';
 
 loadImages();
 
 export class App {
-    private dataLoader?: DataLoader;
-    private gameCards?: IGameCard[];
+    private dataLoader?: DataLoader
+    private gameCards?: IGameCard[]
+    private cardRenderer?:CardRederer
 
     constructor(dataLoaderOrCards: DataLoader | IGameCard[]) {
         if (dataLoaderOrCards instanceof DataLoader) {
@@ -15,17 +17,24 @@ export class App {
         } else {
             this.gameCards = dataLoaderOrCards;
         }
+
+        //TODO: перенести селекторы в константы
+        this.cardRenderer = new CardRederer('#card-container')
     }
 
     async init() {
         let gameCards: IGameCard[] = [];
+
+        //TODO этот кусок нужно вынести в приватный метод
         const container = document.querySelector('#card-container') as HTMLElement;
 
         if (container) {
             showLoader(container); 
         }
+        // 
 
         // Эмуляция задержки загрузки
+        // TODO вынести в отдельную асинхронную обертку
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         if (this.dataLoader) {
@@ -38,50 +47,9 @@ export class App {
             hideLoader(container); // Скрыть лоадер после загрузки данных
         }
 
-        this.renderCards(gameCards);
+        this.cardRenderer?.renderCards(gameCards)
+        // this.renderCards(gameCards);
     }
 
-    private renderCards(gameCards: IGameCard[]) {
-        const container = document.querySelector('#card-container');
-
-        if (!container) {
-            console.error('Container not found');
-            return;
-        }
-        container.innerHTML = "";
-
-        gameCards.forEach((card) => {
-            const cardElement = document.createElement("div");
-            cardElement.classList.add(
-                "rounded-lg",
-                "p-4",
-                "text-white",
-                "min-h-screen",
-                "snap-always",
-                "snap-start",
-                "md:min-h-0"
-            );
-            
-            
-            
-            cardElement.innerHTML = `
-               <img src="${card.image}" alt="${card.title}" class="w-full rounded-xl mb-4 object-contain">
-
-
-
-                <h3 class="text-sm font-bold font-grotesk">${card.title}</h3>
-                <p class="text-xs font-grotesk text-subtext">${card.description}</p>
-            `;
-
-            cardElement.addEventListener('click', () => {
-                if (card.gameUrl) {
-                    window.location.href = `game.html?gameId=${card.id}&gameUrl=${encodeURIComponent(card.gameUrl)}`;
-                } else {
-                    window.location.href = `game.html?gameId=${card.id}`;
-                }
-            });
-
-            container.appendChild(cardElement);
-        });
-    }
+    
 }

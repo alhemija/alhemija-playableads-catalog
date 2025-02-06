@@ -13,27 +13,49 @@ export class GameApp {
         this.gameId = gameId;
     }
 
-    init(gameUrl: string) {
+    init(gameUrl: string): void {
         // Логика для запуска игры
-        console.log(`Игра с ID ${this.gameId} запущена.`);
-        const iframe = document.getElementById('game-iframe') as HTMLIFrameElement;
-        if (iframe) {
-            iframe.src = gameUrl;
-        } else {
-            console.error('Game iframe not found');
+        try {
+            const iframe = document.getElementById('game-iframe') as HTMLIFrameElement
+            if (iframe) {
+                iframe.src = gameUrl;
+                console.log(`Игра с ID ${this.gameId} запущена.`)
+            }
+            else {
+                console.error('Game iframe not found')
+            }
+
+        } catch (err) {
+            console.log(err)
         }
+
+
     }
 }
 
+const initComponent = (): void => {
+    initBottomPanelToggle()
+    initViewToggle()
+
+    if (!(window as any).mobileMenuInitialized) {
+        const mobileMenu = new MobileMenu('hamburger-button', 'mobile-menu')
+        mobileMenu.init()
+        console.log('MobileMenu initialized.');
+        (window as any).mobileMenuInitialized = true
+    }
+
+}
 // Запуск приложения при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('dom content loaded')
+    initComponent()
+
+
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get('gameId');
     const gameUrl = params.get('gameUrl');
 
-    console.log('init game')
-    initBottomPanelToggle();
-    initViewToggle()
+
 
     // TODO: защита от XSS атаки, включить когда будут права на cloud
     // const allowedDomains = ['your-allowed-domain.com'];
@@ -43,12 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //     return;
     // }
 
-    if (!(window as any).mobileMenuInitialized) {
-        const mobileMenu = new MobileMenu('hamburger-button', 'mobile-menu');
-        mobileMenu.init();
-        console.log('MobileMenu initialized.');
-        (window as any).mobileMenuInitialized = true;
-    }
 
     if (gameId && gameUrl) {
         const gameApp = new GameApp(gameId);
