@@ -3,13 +3,15 @@ import { DataLoader } from './DataLoader';
 import { IGameCard } from './Interfaces/IGameCard';
 import { showLoader, hideLoader } from './loader'; // импорт лоадера
 import { CardRederer } from './CardRenderer';
+import { SELECTORS } from './contants';
+import { delay } from '../utils/delay';
 
 loadImages();
 
 export class App {
     private dataLoader?: DataLoader
     private gameCards?: IGameCard[]
-    private cardRenderer?:CardRederer
+    private cardRenderer?: CardRederer
 
     constructor(dataLoaderOrCards: DataLoader | IGameCard[]) {
         if (dataLoaderOrCards instanceof DataLoader) {
@@ -19,7 +21,7 @@ export class App {
         }
 
         //TODO: перенести селекторы в константы
-        this.cardRenderer = new CardRederer('#card-container')
+        this.cardRenderer = new CardRederer(SELECTORS.CARD_CONTAINER)
     }
 
     async init() {
@@ -29,13 +31,13 @@ export class App {
         const container = document.querySelector('#card-container') as HTMLElement;
 
         if (container) {
-            showLoader(container); 
+            showLoader(container);
         }
         // 
 
         // Эмуляция задержки загрузки
         // TODO вынести в отдельную асинхронную обертку
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await delay(1)
 
         if (this.dataLoader) {
             gameCards = await this.dataLoader.fetchData();
@@ -51,5 +53,5 @@ export class App {
         // this.renderCards(gameCards);
     }
 
-    
+
 }

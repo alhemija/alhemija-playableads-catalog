@@ -20,7 +20,6 @@ export class MobileMenu {
     init() {
         if (this.button && this.menu) {
             this.button.addEventListener('click', this.handleClick);
-            console.log('MobileMenu initialized.');
         } else {
             console.error('Кнопка гамбургера или мобильное меню не найдены.');
         }

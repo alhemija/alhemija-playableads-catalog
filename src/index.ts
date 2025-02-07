@@ -6,7 +6,7 @@ import { DataLoader } from "./scripts/DataLoader";
 import { MobileMenu } from './scripts/mobileMenu';
 import { createMobileScrollEffect } from './scripts/mobileScrollEffect';
 
-console.log('hello world');
+
 const dataLoader = new DataLoader('/');
 
 const app = new App(DataLoader.getMockData());
