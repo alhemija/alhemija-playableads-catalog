@@ -1,7 +1,5 @@
 // src/scripts/mobileScrollEffect.ts
 export const createMobileScrollEffect = (): void => {
-    document.addEventListener('DOMContentLoaded', function () {
-
         const cardContainer = document.getElementById('card-container') as HTMLElement | null;
         let startY = 0;
         let isPullingDown = false;
@@ -38,7 +36,7 @@ export const createMobileScrollEffect = (): void => {
         if (cardContainer) {
             enableCardSnapScroll(cardContainer);
         }
-    });
+
 };
 
 const enableCardSnapScroll = (container: HTMLElement): void => {

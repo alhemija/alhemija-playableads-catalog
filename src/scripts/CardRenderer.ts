@@ -1,3 +1,4 @@
+import { buildGameUrl } from "../utils/urlHelper";
 import { IGameCard } from "./Interfaces/IGameCard";
 
 export class CardRederer {
@@ -31,7 +32,7 @@ export class CardRederer {
           if (card.gameUrl) {
               url.searchParams.set('gameUrl', card.gameUrl);
           }
-          window.location.href = url.toString();
+          window.location.href = buildGameUrl(card.id, card.gameUrl);
       });
 
       this.container.appendChild(cardElement);
